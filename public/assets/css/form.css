@@ -1,0 +1,54 @@
+
+#error
+{
+	color:red;
+}
+
+body
+{
+	background-color: #343434;
+    margin-left: 40%;
+    color:white;
+    margin-top: 10%;
+
+}	
+input:focus
+{/*
+	background-color: black;
+	color:white;*/
+	border:solid 3px blue;
+	width:250px;
+}
+select:focus
+{
+	border:solid 3px red;
+width:250px;
+}
+.tbox
+{
+width:140px;
+height:25px;
+border:  solid 2px #CCCCCC;
+}
+select
+{
+	width:140px;
+}
+
+option
+{
+background-color: #343434;
+color:white;
+
+}
+.captcha{
+	width:120px;
+	height:30px;
+	background-color:red;
+    transform: rotate(0.25turn);
+}
+
+#cappy
+{
+	transform: rotate(0.5turn);
+}
