@@ -4,6 +4,7 @@
 
 
 
+
 function isAlphakey(evt)
 {
     var charCode = (evt.which) ? evt.which : event.keyCode
@@ -18,7 +19,6 @@ if ((charCode > 96 && charCode < 123) || (charCode > 64 && charCode <91) || char
       }
    else
    { 
-    alert(charCode);
     return false;
 }
 }
@@ -35,7 +35,6 @@ if(document.getElementById("pswd2").value!="")
 {	
 document.getElementById("error1").style.color="red";	
 document.getElementById("error1").innerHTML="Passwords do not match";
-err2=1;
 }
 else
 {
@@ -142,7 +141,7 @@ function ajaxFunction()
 
   if(username.length<4)
   {
-   document.getElementById('response').innerHTML="Too small!!";
+   document.getElementById('response').innerHTML="Too short!!";
   }
 
 else

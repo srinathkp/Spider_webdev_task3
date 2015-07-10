@@ -11,20 +11,44 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('signup');
-});
 
+Route::get('/usernamecheck/{username}','UserController@check');
+// Route::get('/usernamecheck','UserController@check');
+
+
+Route::post('/','UserController@create');
+
+// Route::get('/profile',function()
+// {
+// 	return View::make('profile1');
+// });
+if(Auth::check())
+{
 Route::get('/home', function()
 {	
-	return View::make('base');
+	return View::make('dashboard')->with(array('title'=>'Hello '.Auth::user()->username,'head'=>'Here You Are Amigo!!!'));
 } );
+Route::get('logout',function()
+{
+   Auth::logout();
+   return Redirect::to('login');
+});
+
+	}
+else {
+	Route::get('/home',function()
+	{
+      return Redirect::to('login');
+	});
+
+Route::get('/', function()
+{
+	return View::make('signup')->with(array('title'=>'SignUp','head'=>'Signup to Discover,Ask and Answer'));
+});
+}
 
 Route::get('/login',function()
 {
 	return View::make('login');
 });
 
-Route::get('/usernamecheck/{username}','HomeController@check');
-Route::get('/usernamecheck','HomeController@check');

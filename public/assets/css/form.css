@@ -12,6 +12,13 @@ body
     margin-top: 10%;
 
 }	
+
+
+.t1
+{
+	font-size: 22px;
+	margin-top: 10%;
+}
 input:focus
 {/*
 	background-color: black;
@@ -51,4 +58,11 @@ color:white;
 #cappy
 {
 	transform: rotate(0.5turn);
+}
+
+#navbar
+{
+	height:50px;background-color:#006677;
+	margin-left:-67%;margin-top: -16.66%;width:169%;
+	text-align: center;color: white;
 }
