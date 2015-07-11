@@ -9,6 +9,7 @@ body
 {
 	background-color: #343434;
     color:white;
+    
 
 
 }
@@ -21,7 +22,6 @@ body
 }
 
 </style>	
-
 
 @yield('csspart')
 @yield('jspart')

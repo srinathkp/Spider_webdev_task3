@@ -43,7 +43,29 @@ Route::get('logout',function()
    return Redirect::to('login');
 });
 
+Route::get('questions/{any}','QuestController@display');
+
+Route::get('/', function()
+{
+	return Redirect::to('/home');
+});
+	
+Route::any('{rest}',function(){
+     
+	return Redirect::to('/home');
+     
+
+
+})->where('rest','.*');
+
+
 	}
+
+
+
+
+
+
 else {
 	Route::get('/home',function()
 	{
@@ -54,7 +76,7 @@ Route::get('/', function()
 {
 	return View::make('signup')->with(array('title'=>'SignUp','head'=>'Signup to Discover,Ask and Answer'));
 });
-}
+
 
 Route::get('/login',function()
 {
@@ -62,3 +84,13 @@ Route::get('/login',function()
 });
 
 Route::post('/login','UserController@login');
+
+Route::any('{rest}',function(){
+     
+	return Redirect::to('login');
+     
+
+
+})->where('rest','.*');
+
+}

@@ -36,13 +36,15 @@ margin-top:-50px;
 font-weight:bold;}
 */
 .sidebar
-{ margin-top: -53px;
+{ 
+	margin-top: -53px;
    margin-left: -45px;
    text-align: center;
    list-style: none;
    width:15%;
-   min-width: 150px;
-   font-size: 32px;
+   min-width: 200px;
+  font-size: 32px;
+position:relative;
 }
 .type
 {
@@ -67,8 +69,9 @@ position: relative;
 {
    background-color: black;
 }
-</style>
+@yield('css')
 
+</style>
 @stop
 
 
@@ -87,18 +90,20 @@ margin-top:-50px;">
 </a>
 
  -->
+ <table>
+ <tr><td>
  <div style="color:black;font-size:35px;text-align:center;height:100px;width:210px;background-color:#decded;"id="score">
  Your Score : <br />{{Auth::user()->score." points!!"}}
  </div>
       		      <br /><br /><br />
                 <ul class="sidebar">
-                <li class="type" onclick="location.href='questions/all';">Questions</li>
-                <li class="type" onclick="location.href='answers/{{Auth::user()->id}}';">My Answers</li>
-                <li class="type" onclick="location.href='instructions';">Instructions</li>
-                <li class="type" onclick="location.href='questions/create';">Post a question</li>
-                <li class="type" onclick="location.href='logout';">logout</li>
+                <li class="type" onclick="location.href='/questions/all';">Questions</li>
+                <li class="type" onclick="location.href='/answers/{{Auth::user()->id}}';">My Answers</li>
+                <li class="type" onclick="location.href='/instructions';">Instructions</li>
+                <li class="type" onclick="location.href='/questions/create';">Post a question</li>
+                <li class="type" onclick="location.href='/logout';">logout</li>
                 </ul>
-
+</td>
 
 @stop
 
@@ -111,12 +116,5 @@ margin-top:-50px;">
 
 {{'SELECT * FROM users WHERE id NOT IN (SELECT qid FROM users WHERE username=Auth::user()->id)'}}
  -->
- <div style="margin-left:50%;margin-top:-20%;">
-<?php 
-{ foreach($users as $user)
-	{echo $user->username;
-	echo "<br />";}
-}
-?>
-</div>
+ @yield('main')
 @stop
