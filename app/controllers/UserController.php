@@ -15,6 +15,55 @@ class UserController extends BaseController {
 	|
 	*/
 
+public function login()
+{
+ 
+		if(Auth::check())
+		{
+			//return 'poda naaye';
+			return Redirect::to('home');
+		}
+
+		else
+		{
+			$creds=Input::all();
+			// $errorMsg=Session::get('error');
+			// Session::forget('error');
+			// if(isset($errorMsg))
+			// {
+			// 	//return 'yo';
+			// 	return View::make('login')->with(array('errorMsg'=>'Invalid credentials','title'=>'TDC login'));
+			// }
+			if(!isset($creds['username'],$creds['pswd']))
+			{
+				//return 'panni';
+				return View::make('login')->with(array('errorMsg'=>'Enter the details to login','title'=>'LOGIN',
+					'head'=>'Login to explore'));
+
+			}
+			else if( Auth::attempt(array('username'=>$creds['username'],'password'=>$creds['pswd'])))
+			{
+				//return 'poda';
+				return Redirect::to('home');
+			}
+			else
+			{
+				//return 'error creds';
+				return View::make('login')->with(array('title'=>'LOGIN','errorMsg'=>'Invalid credentials',
+					'head'=>'Login to explore'));
+			}
+		}
+
+
+
+
+
+
+}
+
+
+
+
 
 	public function check($username)
 	{
@@ -101,7 +150,7 @@ if(Auth::check())
 $userdata=array('username'=>$user->username,'password'=>$details['pswd'] );
 if( Auth::attempt($userdata))
 			{
-				return Redirect::to('profile');
+				return Redirect::to('home');
 			}
   }}
 

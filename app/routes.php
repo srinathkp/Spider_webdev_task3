@@ -22,11 +22,20 @@ Route::post('/','UserController@create');
 // {
 // 	return View::make('profile1');
 // });
+
+
 if(Auth::check())
 {
 Route::get('/home', function()
 {	
-	return View::make('dashboard')->with(array('title'=>'Hello '.Auth::user()->username,'head'=>'Here You Are Amigo!!!'));
+	
+    $filter=Auth::user()->qid_answered;
+
+	$users=DB::table('users')
+	                 ->whereNotIn('id',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
+	                 ->get();
+	return View::make('dashboard')->with(array('title'=>'Hello '.$filter,
+		'head'=>'Here You Are Amigo!!!','users'=>$users));
 } );
 Route::get('logout',function()
 {
@@ -49,6 +58,7 @@ Route::get('/', function()
 
 Route::get('/login',function()
 {
-	return View::make('login');
+	return View::make('login')->with(array('title'=>'Login','head'=>'Login to explore'));
 });
 
+Route::post('/login','UserController@login');

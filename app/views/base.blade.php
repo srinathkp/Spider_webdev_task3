@@ -16,8 +16,8 @@ body
 
 #navbar
 {
-	height:50px;background-color:#006677;
-	text-align: center;color: white;
+	height:100px;background-color:#005555;margin-top:-20px;width:100%;
+	text-align: center;color: white;vertical-align: middle;
 }
 
 </style>	
@@ -32,7 +32,9 @@ body
 <body id="main">
 <div id="navbar">
 	
-	<h2 style="color:white;">{{$head or 'Inno QuizMaster'}}</h2>
+	<h2 style="color:white;"><br />{{$head or 'Inno QuizMaster'}}</h2>
+	</div>
+	<div id="sidebar">
 @yield('navbar')
 </div>
 

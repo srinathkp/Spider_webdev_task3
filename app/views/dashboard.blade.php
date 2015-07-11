@@ -2,7 +2,7 @@
 
 @section('csspart')
 <style>
-#quest
+/*#quest
 {
 width:100px;
 height:50px;
@@ -26,16 +26,47 @@ vertical-align:middle;
 font-weight:bold;}
 
 #logout
-{
+{/*
 width:100px;
-height:50px;
-background-color:black;
+height:50px;*/
+/*background-color:black;
 color:white;
 margin-left:90%;
 margin-top:-50px;
-vertical-align:middle;
 font-weight:bold;}
+*/
+.sidebar
+{ margin-top: -53px;
+   margin-left: -45px;
+   text-align: center;
+   list-style: none;
+   width:15%;
+   min-width: 150px;
+   font-size: 32px;
+}
+.type
+{
+   background-color: #003333;
+   cursor: pointer;
+   border:1px solid #007777;
+   height:50px;
 
+}
+.type:hover
+{
+   background-color: #00CCCC;
+   border:1px solid #003333;
+}
+.content
+{
+margin-top: 300px;
+position: relative;
+
+}
+.type:active
+{
+   background-color: black;
+}
 </style>
 
 @stop
@@ -43,15 +74,32 @@ font-weight:bold;}
 
 
 @section('navbar')
-<a href='questions/all' style="color:white;font-style:height:50px;width:100px;font-size:22px;"><div id="quest">
-Questions </div>
+<!-- <a href='questions/all' style="color:white;font-style:height:50px;width:100px;font-size:22px;"><ul><li>
+Questions </li></ul>
 </a>
-<a href="answers/{{Auth::user()->id}}" style="color:white;font-style:height:50px;width:100px;font-size:22px;"><div id="answer">
-Your Answers </div>
+<a href="answers/{{Auth::user()->id}}" style="color:white;font-style:height:50px;width:100px;font-size:22px;">
+<ul><li>Your Answers </li></ul>
 </a>
-<a href='logout' style="color:white;font-style:height:50px;width:100px;font-size:22px;"><div id="logout">
-Logout </div>
+<a href='logout' style="color:white;height:50px;width:100px;font-size:22px;
+margin-left:90%;
+margin-top:-50px;">
+<ul><li>Logout </li></ul>
 </a>
+
+ -->
+ <div style="color:black;font-size:35px;text-align:center;height:100px;width:210px;background-color:#decded;"id="score">
+ Your Score : <br />{{Auth::user()->score." points!!"}}
+ </div>
+      		      <br /><br /><br />
+                <ul class="sidebar">
+                <li class="type" onclick="location.href='questions/all';">Questions</li>
+                <li class="type" onclick="location.href='answers/{{Auth::user()->id}}';">My Answers</li>
+                <li class="type" onclick="location.href='instructions';">Instructions</li>
+                <li class="type" onclick="location.href='questions/create';">Post a question</li>
+                <li class="type" onclick="location.href='logout';">logout</li>
+                </ul>
+
+
 @stop
 
 
@@ -59,6 +107,16 @@ Logout </div>
 
 <!-- <img src="{{'assets/'.Auth::user()->prof_pic}}">
  -->
+<!--  $user=new User;
 
-
+{{'SELECT * FROM users WHERE id NOT IN (SELECT qid FROM users WHERE username=Auth::user()->id)'}}
+ -->
+ <div style="margin-left:50%;margin-top:-20%;">
+<?php 
+{ foreach($users as $user)
+	{echo $user->username;
+	echo "<br />";}
+}
+?>
+</div>
 @stop

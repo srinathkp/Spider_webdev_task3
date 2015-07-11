@@ -48,17 +48,7 @@ background-color: #343434;
 color:white;
 
 }
-.captcha{
-	width:120px;
-	height:30px;
-	background-color:red;
-    transform: rotate(0.25turn);
-}
 
-#cappy
-{
-	transform: rotate(0.5turn);
-}
 
 #navbar
 {
