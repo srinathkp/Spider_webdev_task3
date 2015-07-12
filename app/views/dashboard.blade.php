@@ -116,5 +116,7 @@ margin-top:-50px;">
 
 {{'SELECT * FROM users WHERE id NOT IN (SELECT qid FROM users WHERE username=Auth::user()->id)'}}
  -->
+ <td>
  @yield('main')
+ </td></tr></table>
 @stop

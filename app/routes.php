@@ -49,6 +49,10 @@ Route::get('/', function()
 {
 	return Redirect::to('/home');
 });
+
+Route::post('questions/{any}','QuestController@ans_check');
+
+
 	
 Route::any('{rest}',function(){
      
