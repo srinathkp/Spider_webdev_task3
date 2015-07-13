@@ -14,6 +14,7 @@
 
 Route::get('/usernamecheck/{username}','UserController@check');
 // Route::get('/usernamecheck','UserController@check');
+Route::get('/usernamesearch/{username}','UserController@search');
 
 
 Route::post('/','UserController@create');
@@ -42,6 +43,26 @@ Route::get('logout',function()
    Auth::logout();
    return Redirect::to('login');
 });
+
+Route::get('/instructions',function()
+{
+   return View::make('instructions')->with(array('title'=>'Instructions','head'=>'Here are the Instructions !!'));
+});
+
+Route::get('/leaderboard',function()
+{
+
+
+ $questions=DB::table('questions')
+	                 ->whereNotIn('qid',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
+	                 ->get();
+$users = User::orderBy('score', 'DESC')->get();
+
+   return View::make('leaderboard')->with(array('title'=>'Leaderboard','head'=>'Know where you stand !!','users'=>$users));
+});
+
+
+
 
 Route::get('questions/{any}','QuestController@display');
 

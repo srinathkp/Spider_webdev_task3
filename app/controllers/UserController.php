@@ -90,6 +90,21 @@ public function login()
 
 	}
 
+
+	public function search($username)
+	{
+              
+				$details=$username;
+            
+            $users=User::where('username', 'LIKE', '%'.$username.'%')->get();
+            $count=User::where('username', 'LIKE', '%'.$username.'%')->count();
+            
+foreach($users as $user)
+  echo $user->rank."&nbsp;&nbsp;&nbsp; ".$user['username']."&nbsp;&nbsp;&nbsp; ".$user['score']."<br />";
+
+
+	}
+
 	public function showWelcome()
 	{
 		return View::make('hello');

@@ -101,7 +101,9 @@ margin-top:-50px;">
                 <li class="type" onclick="location.href='/answers/{{Auth::user()->id}}';">My Answers</li>
                 <li class="type" onclick="location.href='/instructions';">Instructions</li>
                 <li class="type" onclick="location.href='/questions/create';">Post a question</li>
+                <li class="type" onclick="location.href='/leaderboard';">Leaderboard</li>
                 <li class="type" onclick="location.href='/logout';">logout</li>
+
                 </ul>
 </td>
 

@@ -25,4 +25,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
+
+public function getRankAttribute()
+{
+    return 1+$this->newQuery()->where('score', '>', $this->score)->count();
+}
+
+
 }
