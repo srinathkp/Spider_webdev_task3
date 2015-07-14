@@ -59,6 +59,7 @@ $sort_users= User::orderBy('username', 'ASC')->get();
 });
 
 
+Route::post('questions/create','QuestController@create');
 
 
 Route::get('questions/{any}','QuestController@display');

@@ -74,6 +74,9 @@ position: relative;
 </style>
 @stop
 
+@section('jspart')
+@yield('js')
+@stop
 
 
 @section('navbar')

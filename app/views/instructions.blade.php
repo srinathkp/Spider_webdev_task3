@@ -13,7 +13,7 @@ list-style:none;
 
 .ins:before {
     content: "• ";
-    color: black;
+    color: white;
 
 margin-left:9%;
 

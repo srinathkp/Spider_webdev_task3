@@ -83,15 +83,36 @@ else
 	 */
 
 public function ans_check($any)
-{
+{       
+
+        
+
+
+
     		$details=Input::all();
 
         $answer=DB::table('questions')->where('qid',$details['qid'])->pluck('answer');
+        $diff=DB::table('questions')->where('qid',$details['qid'])->pluck('difficulty');
         $uanswer=$details['answer'];
+        
         if($answer==$uanswer)
-        	$pts=1;
+        {	
+         if($diff == "easy")
+         	$pts=1;
+         else if($diff == "moderate")
+         	$pts=2;
+         else if($diff == "difficult")
+         	$pts=3;
+        }
         else
+        	{
+        	  if($diff=="difficult")
         	$pts=-1;
+               else if($diff=="moderate")
+               	$pts=-2;
+               else if($diff=="easy")
+               	$pts=-3;
+        }
         $uid=Auth::user()->id;
         $qid=$details['qid'];
 
@@ -111,12 +132,12 @@ public function ans_check($any)
         DB::table('users')->where('id',$uid)->update(array('score'=>$score_new));
     if($pts>0)
     {
-    	DB::table('users')->where('id',$uid)->update(array('qid_answered'=>'You are right.You get 1+'));
+    	DB::table('users')->where('id',$uid)->update(array('qid_answered'=>'You are right.You get '.$pts.'+'));
 return Redirect::to('/questions/'.$any);
     }
     else
     {
-    	DB::table('users')->where('id',$uid)->update(array('qid_answered'=>'Wrong Answer.You get -1 <br /> Q :'.$quiz.'<br /> A : '.$answer.') '.$option));
+    	DB::table('users')->where('id',$uid)->update(array('qid_answered'=>'Wrong Answer.You get -'.$pts.' <br /> Q :'.$quiz.'<br /> A : '.$answer.') '.$option));
 return Redirect::to('/questions/'.$any);
     	}// return View::make('/questions/'.$any)->
 
@@ -134,7 +155,67 @@ return Redirect::to('/questions/'.$any);
 
 	public function create()
 	{
-		//
+	
+    		$details=Input::all();
+         
+
+		$validator = Validator::make(
+ 			    array(
+        			'question' => $details['question'],
+        			'opta' => $details['opta'],
+        			'optb' => $details['optb'],
+        			'optc'=>$details['optc'],
+                    'optd'=>$details["optd"]
+    				),
+    			array(
+        			'question' => 'required|min:4',
+        			'opta' => 'required|min:4',
+        			'optb' => 'required|min:4|',
+        			'optc'=>'required|min:4',
+        			 'optd'=>'required|min:4'
+    				)
+			);
+
+		if($validator->fails() || $details['opta']==$details['optb'] || 
+			$details['opta']==$details['optc'] || $details['opta']==$details['optd'] 
+			|| $details['optb']==$details['optc'] || $details['optb']==$details['optd']
+			|| $details['optc']==$details['optd'])
+			{
+				return View::make('question_create')->with(array('msg'=>"Check your form.Pls Note that the length of the text fields should be > 4", 'title'=>'Post a Question'
+					,'head'=>'Post your own question !!!'));
+			}
+ else
+			{
+
+
+
+
+
+
+
+         $question=new Question;
+         $question->question=$details['question'];
+         $question->opta=$details['opta'];
+
+         $question->optb=$details['optb'];
+
+         $question->optc=$details['optc'];
+
+         $question->optd=$details['optd'];
+
+         $question->answer=$details['answer'];
+         $question->difficulty=$details['difficulty'];
+         $question->category=$details['category'];
+         $question->posted_by=Auth::user()->id;
+         $question->save();
+    
+$filter=new Filter;
+$filter->qid=DB::table('questions')->orderBy('qid','desc')->where('posted_by',Auth::user()->id)->take(1)->pluck('qid');
+        $filter->uid=Auth::user()->id;
+$filter->save();
+
+    return Redirect::to('/home');
+}
 	}
 
 
