@@ -29,7 +29,12 @@ if(username.length >=1)
   ajaxRequest.onreadystatechange = function(){
    if(ajaxRequest.readyState == 4 && ajaxRequest.status==200){
      
-       document.getElementById("search").innerHTML = ajaxRequest.responseText;
+
+       document.getElementById("search").style.display="none";
+       document.getElementById("sortedbyname").style.display="none";
+       document.getElementById("response").style.display="block";
+
+       document.getElementById("response").innerHTML = ajaxRequest.responseText;
   //    
   }
 
@@ -51,4 +56,24 @@ if(username.length >=1)
 
   ajaxRequest.send(); 
 }
+}
+
+
+function sortbyrank()
+{
+  document.getElementById('search').style.display="block";
+  document.getElementById('sortedbyname').style.display="none";
+  document.getElementById("response").style.display="none";
+       
+}
+
+
+
+function sortbyname()
+{
+  document.getElementById('search').style.display="none";
+  document.getElementById('sortedbyname').style.display="block";
+  document.getElementById("response").style.display="none";
+       
+  
 }

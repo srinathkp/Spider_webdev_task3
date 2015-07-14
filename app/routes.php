@@ -53,12 +53,9 @@ Route::get('/leaderboard',function()
 {
 
 
- $questions=DB::table('questions')
-	                 ->whereNotIn('qid',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
-	                 ->get();
 $users = User::orderBy('score', 'DESC')->get();
-
-   return View::make('leaderboard')->with(array('title'=>'Leaderboard','head'=>'Know where you stand !!','users'=>$users));
+$sort_users= User::orderBy('username', 'ASC')->get();
+   return View::make('leaderboard')->with(array('title'=>'Leaderboard','head'=>'Know where you stand !!','users'=>$users,'sortedusers'=>$sort_users));
 });
 
 
