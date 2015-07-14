@@ -25,14 +25,14 @@ body
 
 @yield('csspart')
 @yield('jspart')
-<title>{{$title or "Inno Quizmaster"}}</title>
+<title>{{$title or "QuizCorner"}}</title>
 
 </head>
 
 <body id="main">
 <div id="navbar">
 	
-	<h2 style="color:white;"><br />{{$head or 'Inno QuizMaster'}}</h2>
+	<h2 style="color:white;"><br />{{$head or 'QuizCorner'}}</h2>
 	</div>
 	<div id="sidebar">
 @yield('navbar')

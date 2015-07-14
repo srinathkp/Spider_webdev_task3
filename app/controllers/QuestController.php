@@ -65,7 +65,7 @@ else if($any=='general')
 else if($any=='create')
 {
 
-return View::make('question_create');
+return View::make('question_create')->with(array('title'=>'Post a Question','head'=>'Post Your Question here..!!!'));
 }
 else
 {
@@ -182,7 +182,7 @@ return Redirect::to('/questions/'.$any);
 			|| $details['optc']==$details['optd'])
 			{
 				return View::make('question_create')->with(array('msg'=>"Check your form.Pls Note that the length of the text fields should be > 4", 'title'=>'Post a Question'
-					,'head'=>'Post your own question !!!'));
+					,'head'=>'Post your question !!!'));
 			}
  else
 			{
