@@ -23,6 +23,18 @@ background-color:#ff0000;border-color:white;color:white;
 margin-left:6%;margin-top:-139px;position:absolute;
 background-color:#006677;border-color:white;color:white;
 }
+
+
+.btn1{
+margin-left:6%;margin-top:-139px;position:absolute;
+
+width:100px;
+height:30px;text-align:center;
+background-color:#0088AA;color:white;
+cellSpacing:0;
+cellPadding:0;
+border: solid 0px black;
+}
 @stop
 
 @section('jspart')
@@ -45,12 +57,12 @@ background-color:#006677;border-color:white;color:white;
 @section('main')
 
 <input type="text" class="com" name="username" id="username">
-<input type="button" value="search" class="com1"  style="margin-left:18%" onclick="search()">
+<input type="button" value="search" class="btn1"  style="margin-left:18%" onclick="search()">
 
 <br />
 <br />
- <input type="button" class="com1" onclick="sortbyrank();" style="margin-left:6%;" value="SortByScore">&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="button" onclick="sortbyname();" class="com1" style="margin-left:13%;" value="SortByName">&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="button" class="btn1" onclick="sortbyrank();" style="margin-left:6%;" value="SortByScore">&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" onclick="sortbyname();" class="btn1" style="margin-left:13%;" value="SortByName">&nbsp;&nbsp;&nbsp;&nbsp;
 <br /><br />
  <div id="search" class="com" style="font-size:28px;color:#ffcc33;display:none">
 
@@ -162,4 +174,10 @@ echo Auth::user()->rank;
 
 <div id="response" class="com" style="display:none;font-size:28px;color:#ffcc33;">
 </div>
+
+
+<script type='text/javascript'>
+	document.getElementById('leaderboard').style.backgroundColor="#ff3333";
+
+</script>
 @stop

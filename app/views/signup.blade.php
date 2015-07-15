@@ -1,6 +1,20 @@
 @extends('base')
 @section('csspart')
     	{{HTML::style('assets/css/form.css')}}
+<style >
+.btn{
+width:150px;
+height:40px;text-align:center;
+background-color:#0088AA;color:white;
+cellSpacing:0;
+cellPadding:0;
+border:solid 0px black;
+}
+.btn:focus
+{
+	width:150px;
+}
+</style>
 
 @stop
 
@@ -12,7 +26,17 @@
 
 @section('body')
 
+
+<!-- <span style="margin-top:30px;" >Already an user, LOGIN HERE</span> &nbsp;&nbsp;&nbsp;
+ --><input type="button" id="btn1" style="margin-top:50px;background-color:black;" class="btn" value="Signup" onclick="location.href='/';">
+<input type="button" id="btn2" style="margin-top:50px;margin-left:-4px" class="btn" value="Login" onclick="location.href='/login';">
+
+
 {{ Form::open(array('enctype'=>'multipart/form-data','files'=>true)) }}
+
+
+
+
 <table class="t1">
 <tr><td>
 Full Name : 

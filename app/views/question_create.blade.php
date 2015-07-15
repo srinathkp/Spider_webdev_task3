@@ -217,4 +217,10 @@ background-color:#0088AA;color:white;" value="submit" onclick="false">
 </div>
 
 <div class="com" style="color:red;font-size:28px;">{{$msg or " "}}</div>
+
+
+<script type='text/javascript'>
+	document.getElementById('createquiz').style.backgroundColor="#ff3333";
+
+</script>
 @stop

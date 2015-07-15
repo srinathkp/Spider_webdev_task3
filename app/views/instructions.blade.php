@@ -27,6 +27,7 @@ margin-left:9%;
 @stop
 
 
+
 @section('main')
 
  <div style="margin-left:6%;margin-top:-139px;position:absolute;font-size:28px;color:#ffcc33;">
@@ -49,4 +50,9 @@ margin-left:9%;
 
 
 </div>
+
+<script type='text/javascript'>
+	document.getElementById('instructions').style.backgroundColor="#ff3333";
+
+</script>
 @stop

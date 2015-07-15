@@ -44,6 +44,8 @@ Route::get('logout',function()
    return Redirect::to('login');
 });
 
+
+
 Route::get('/instructions',function()
 {
    return View::make('instructions')->with(array('title'=>'Instructions','head'=>'Here are the Instructions !!'));
@@ -59,17 +61,23 @@ $sort_users= User::orderBy('username', 'ASC')->get();
 });
 
 
-Route::post('questions/create','QuestController@create');
+Route::post('/questions/create','QuestController@create');
 
 
-Route::get('questions/{any}','QuestController@display');
+Route::get('/questions/{any}','QuestController@display');
 
+Route::get('/myanswers/{any}','AnswerController@index');
+
+// 	function()
+// {
+//    return View::make('myanswers')->with(array('title'=>'Your Answers','head'=>'Your journey in this corner so far ..!.:-)'));
+// });
 Route::get('/', function()
 {
 	return Redirect::to('/home');
 });
 
-Route::post('questions/{any}','QuestController@ans_check');
+Route::post('/questions/{any}','QuestController@ans_check');
 
 
 	

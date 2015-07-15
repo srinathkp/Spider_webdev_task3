@@ -50,14 +50,14 @@ position:relative;
 {
    background-color: #003333;
    cursor: pointer;
-   border:1px solid #007777;
+   border:0x solid #007777;
    height:50px;
 
 }
 .type:hover
 {
    background-color: #00CCCC;
-   border:1px solid #003333;
+   border:0px solid #003333;
 }
 .content
 {
@@ -100,12 +100,12 @@ margin-top:-50px;">
  </div>
       		      <br /><br /><br />
                 <ul class="sidebar">
-                <li class="type" onclick="location.href='/questions/all';">Questions</li>
-                <li class="type" onclick="location.href='/answers/{{Auth::user()->id}}';">My Answers</li>
-                <li class="type" onclick="location.href='/instructions';">Instructions</li>
-                <li class="type" onclick="location.href='/questions/create';">Post a question</li>
-                <li class="type" onclick="location.href='/leaderboard';">Leaderboard</li>
-                <li class="type" onclick="location.href='/logout';">logout</li>
+                <li class="type" id="questions" onclick="location.href='/questions/all';">Questions</li>
+                <li class="type" id="myanswers" onclick="location.href='/myanswers/all';">My Answers</li>
+                <li class="type" id="instructions" onclick="location.href='/instructions';">Instructions</li>
+                <li class="type" id="createquiz" onclick="location.href='/questions/create';">Post a question</li>
+                <li class="type" id="leaderboard" onclick="location.href='/leaderboard';">Leaderboard</li>
+                <li class="type" id="logout" onclick="location.href='/logout';">logout</li>
 
                 </ul>
 </td>
@@ -123,5 +123,6 @@ margin-top:-50px;">
  -->
  <td>
  @yield('main')
+ 
  </td></tr></table>
 @stop

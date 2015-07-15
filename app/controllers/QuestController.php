@@ -93,7 +93,10 @@ public function ans_check($any)
 
         $answer=DB::table('questions')->where('qid',$details['qid'])->pluck('answer');
         $diff=DB::table('questions')->where('qid',$details['qid'])->pluck('difficulty');
-        $uanswer=$details['answer'];
+       
+if(!empty($details['answer']))
+        {
+        	$uanswer=$details['answer'];
         
         if($answer==$uanswer)
         {	
@@ -137,14 +140,17 @@ return Redirect::to('/questions/'.$any);
     }
     else
     {
-    	DB::table('users')->where('id',$uid)->update(array('qid_answered'=>'Wrong Answer.You get -'.$pts.' <br /> Q :'.$quiz.'<br /> A : '.$answer.') '.$option));
+    	DB::table('users')->where('id',$uid)->update(array('qid_answered'=>'Wrong Answer.You get '.$pts.'points :( <br /> Q :'.$quiz.'<br /> A : '.$answer.') '.$option));
 return Redirect::to('/questions/'.$any);
     	}// return View::make('/questions/'.$any)->
 
 
 
-
-
+}
+else
+{
+	return Redirect::to('/questions/all');
+}
 
 
 
