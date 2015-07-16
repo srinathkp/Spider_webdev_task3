@@ -64,16 +64,29 @@ function sortbyrank()
   document.getElementById('search').style.display="block";
   document.getElementById('sortedbyname').style.display="none";
   document.getElementById("response").style.display="none";
-       
+    document.getElementById("graphSpace2").style.display="none";
+    document.getElementById("graphSpace1").style.display="block";
+
+document.getElementById("graph2").style.display="none";
+document.getElementById("graph1").style.display="block";
+  document.getElementById('ran').style.backgroundColor="#ff8855";
+  document.getElementById('nam').style.backgroundColor="#0088AA";
 }
 
 
 
 function sortbyname()
 {
+
+    document.getElementById("graphSpace2").style.display="block";
+    document.getElementById("graphSpace1").style.display="none";
   document.getElementById('search').style.display="none";
   document.getElementById('sortedbyname').style.display="block";
   document.getElementById("response").style.display="none";
-       
+  document.getElementById('nam').style.backgroundColor="#ff8855";
+  document.getElementById('ran').style.backgroundColor="#0088AA";
   
+  
+document.getElementById("graph2").style.display="block";
+document.getElementById("graph1").style.display="none";
 }

@@ -50,7 +50,7 @@ position:relative;
 {
    background-color: #003333;
    cursor: pointer;
-   border:0x solid #007777;
+   border:0px solid #007777;
    height:50px;
 
 }
@@ -105,6 +105,8 @@ margin-top:-50px;">
                 <li class="type" id="instructions" onclick="location.href='/instructions';">Instructions</li>
                 <li class="type" id="createquiz" onclick="location.href='/questions/create';">Post a question</li>
                 <li class="type" id="leaderboard" onclick="location.href='/leaderboard';">Leaderboard</li>
+                <li class="type" id="stats" onclick="location.href='/stats';">Stats</li>
+
                 <li class="type" id="logout" onclick="location.href='/logout';">logout</li>
 
                 </ul>

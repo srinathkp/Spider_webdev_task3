@@ -61,7 +61,7 @@ else if($any=='general')
 
 else
 {
-	return Redirect::to('questions/all');
+	return Redirect::to('myanswers/all');
 }
 
 

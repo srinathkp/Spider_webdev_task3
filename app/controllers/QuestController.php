@@ -18,6 +18,7 @@ if($any=='all')
  // $questions=Question::all();
  $questions=DB::table('questions')
 	                 ->whereNotIn('qid',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
+	                 ->where('posted_by','!=',Auth::user()->id)
 	                 ->get();
 	return View::make('question')->with(array('questions'=>$questions));
 }
@@ -28,6 +29,8 @@ else if($any=='sports')
  $questions=DB::table('questions')
                      ->where('category','sports')
 	                 ->whereNotIn('qid',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
+	                 	                 ->where('posted_by','!=',Auth::user()->id)
+
 	                 ->get();
 	return View::make('question')->with(array('questions'=>$questions));
 }
@@ -38,7 +41,8 @@ else if($any=='science')
  $questions=DB::table('questions')
                      ->where('category','science')
 	                 ->whereNotIn('qid',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
-	                 ->get();
+	                 	                 ->where('posted_by','!=',Auth::user()->id)
+->get();
 	return View::make('question')->with(array('questions'=>$questions));
 }
 
@@ -49,7 +53,8 @@ else if($any=='nature')
  $questions=DB::table('questions')
                      ->where('category','nature')
 	                 ->whereNotIn('qid',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
-	                 ->get();
+	                 	                 ->where('posted_by','!=',Auth::user()->id)
+->get();
 	return View::make('question')->with(array('questions'=>$questions));
 }
 
@@ -59,9 +64,43 @@ else if($any=='general')
  $questions=DB::table('questions')
                       ->where('category','general')
                        ->whereNotIn('qid',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
-	                 ->get();
+	                 	                 ->where('posted_by','!=',Auth::user()->id)
+->get();
 	return View::make('question')->with(array('questions'=>$questions));
 }
+else if($any=='easy')
+{
+ // $questions=Question::all();
+ $questions=DB::table('questions')
+                      ->where('difficulty','easy')
+                       ->whereNotIn('qid',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
+	                 	                 ->where('posted_by','!=',Auth::user()->id)
+->get();
+	return View::make('question')->with(array('questions'=>$questions));
+}
+
+else if($any=='moderate')
+{
+ // $questions=Question::all();
+ $questions=DB::table('questions')
+                      ->where('difficulty','moderate')
+                       ->whereNotIn('qid',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
+	                 	                 ->where('posted_by','!=',Auth::user()->id)
+->get();
+	return View::make('question')->with(array('questions'=>$questions));
+}
+
+else if($any=='difficult')
+{
+ // $questions=Question::all();
+ $questions=DB::table('questions')
+                      ->where('difficulty','difficult')
+                       ->whereNotIn('qid',function($q){$q->select('qid')->from('filter')->where('uid',Auth::user()->id);})
+	                 	                 ->where('posted_by','!=',Auth::user()->id)
+->get();
+	return View::make('question')->with(array('questions'=>$questions));
+}
+
 else if($any=='create')
 {
 

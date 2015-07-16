@@ -44,7 +44,7 @@ Route::get('logout',function()
    return Redirect::to('login');
 });
 
-
+Route::get('/stats','UserController@display');
 
 Route::get('/instructions',function()
 {

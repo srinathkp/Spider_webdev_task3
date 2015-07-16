@@ -21,7 +21,7 @@ public function login()
 		if(Auth::check())
 		{
 			//return 'poda naaye';
-			return Redirect::to('home');
+			return Redirect::to('/');
 		}
 
 		else
@@ -44,7 +44,7 @@ public function login()
 			else if( Auth::attempt(array('username'=>$creds['username'],'password'=>$creds['pswd'])))
 			{
 				//return 'poda';
-				return Redirect::to('home');
+				return Redirect::to('/instructions');
 			}
 			else
 			{
@@ -99,10 +99,11 @@ public function login()
             $users=User::where('username', 'LIKE', '%'.$username.'%')->get();
             $count=User::where('username', 'LIKE', '%'.$username.'%')->count();
             
-foreach($users as $user)
-  echo $user->rank."&nbsp;&nbsp;&nbsp; ".$user['username']."&nbsp;&nbsp;&nbsp; ".$user['score']."<br />";
+  echo "<table><tr><td><strong>RANK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td><td><strong>USERNAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td><td><strong>SCORE</td></tr></strong>";
+  foreach($users as $user)
 
-
+ { echo "<tr><td>".$user->rank."</td><td>".$user['username']."</td><td>".$user['score']."</td></tr>";}
+  echo "</table>";
 	}
 
 	public function showWelcome()
@@ -169,6 +170,33 @@ if( Auth::attempt($userdata))
 			}
   }}
 
+
+
+
+
+
+public function display()
+{
+
+$answered=DB::table('filter')
+	                 ->where('uid',Auth::user()->id)
+           ->count();
+$posted=DB::table('questions')->where('posted_by',Auth::user()->id)
+                              ->count();
+$pts=DB::table('filter')->where('uid',Auth::user()->id)->get();
+$correct=0;
+
+foreach($pts as $pt)
+{
+
+
+	if($pt->points>0)
+		$correct++;
+
+}
+return View::make('stats')->with(array('posted'=>$posted,'answered'=>$answered,'correct'=>$correct));
+
+}
 
 
 

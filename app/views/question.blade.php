@@ -3,7 +3,7 @@
 @section('css')
 .display
 {
-background-color:#004444;
+background-color:#343434;
 
 }
 
@@ -14,6 +14,7 @@ background-color:#0088AA;color:white;
 cellSpacing:0;
 cellPadding:0;
 border: solid 0px black;
+cursor:pointer;
 }
 .btn
 {
@@ -32,12 +33,16 @@ color:maroon;
 
 
 
- <div style="margin-left:10%;margin-top:-250px;width:800px;position:absolute;">
+ <div style="margin-left:10%;margin-top:-234px;width:800px;position:absolute;">
  <input type="button" id='one' style="margin-top:-50px;" class="btn1" value="All" onclick="location.href='/questions/all';">
 <input type="button" id='two' style="margin-top:-50px;margin-left:-3px;" class="btn1" value="General" onclick="location.href='/questions/general';">
  <input type="button" id='three'  style="margin-top:-50px;margin-left:-3px;" class="btn1" value="Science" onclick="location.href='/questions/science';">
 <input type="button" id='four' style="margin-top:-50px;margin-left:-3px;" class="btn1" value="Nature" onclick="location.href='/questions/nature';">
 <input type="button" id='five' style="margin-top:-50px;margin-left:-3px;" class="btn1" value="Sports" onclick="location.href='/questions/sports';">
+<br />
+ <input type="button" id='six' style="margin-top:10px;margin-left:150px;" class="btn1" value="Easy" onclick="location.href='/questions/easy';">
+<input type="button" id='seven' style="margin-left:-3px;" class="btn1" value="Moderate" onclick="location.href='/questions/moderate';">
+<input type="button" id='eight' style="margin-left:-4px;" class="btn1" value="Difficult" onclick="location.href='/questions/difficult';">
 <br /><br />
 <span style="color:green;font-size:24px;">
 {{Auth::user()->qid_answered}}
@@ -63,7 +68,15 @@ echo "document.getElementById('four').style.backgroundColor='#ff8855';</script>"
       
 else if($_SERVER['REQUEST_URI']=="/questions/sports")
 echo "document.getElementById('five').style.backgroundColor='#ff8855';</script>";
-      
+
+else if($_SERVER['REQUEST_URI']=="/questions/easy")
+echo "document.getElementById('six').style.backgroundColor='#ff8855';</script>";
+
+else if($_SERVER['REQUEST_URI']=="/questions/moderate")
+echo "document.getElementById('seven').style.backgroundColor='#ff8855';</script>";
+
+else if($_SERVER['REQUEST_URI']=="/questions/difficult")
+echo "document.getElementById('eight').style.backgroundColor='#ff8855';</script>";
 
 
 
@@ -79,6 +92,7 @@ echo "document.getElementById('five').style.backgroundColor='#ff8855';</script>"
 <br /><br />
 <?php 
 $sub="ans_sub";
+$n=0;
 { foreach($questions as $question)
 	{   
 		echo "<div class=display id=".$question->qid.">";
@@ -88,7 +102,7 @@ $sub="ans_sub";
 	echo "<br /><br />";
 	echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-	echo "Rated as ".$question->difficulty."</strong>";
+	echo "Rated as <span style='color:red;'>".$question->difficulty."</span></strong>";
 		echo "<br /><br />";
 	echo "<input type=hidden name=qid value=".$question->qid.">";
 	echo "<input type=radio name=answer required value='a'>&nbsp;&nbsp;".$question->opta;
@@ -104,7 +118,11 @@ $sub="ans_sub";
 		echo "</form>";
 		    echo "<br />";
 
-		echo "</div>";
+		echo "</div>";$n++;
+}
+if($n==0)
+{
+	echo "<span style='color:#aa7755;font-weight:bolder;margin-left:250px;font-size:24px;'>No New Questions found...!</span>";
 }
 }
 ?>

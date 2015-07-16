@@ -28,8 +28,8 @@ border:solid 0px black;
 
 
 <!-- <span style="margin-top:30px;" >Already an user, LOGIN HERE</span> &nbsp;&nbsp;&nbsp;
- --><input type="button" id="btn1" style="margin-top:50px;background-color:black;" class="btn" value="Signup" onclick="location.href='/';">
-<input type="button" id="btn2" style="margin-top:50px;margin-left:-4px" class="btn" value="Login" onclick="location.href='/login';">
+ --><input type="button" id="btn1" style="margin-top:50px;background-color:black;cursor:pointer;" class="btn" value="Signup" onclick="location.href='/';">
+<input type="button" id="btn2" style="margin-top:50px;margin-left:-4px;cursor:pointer;" class="btn" value="Login" onclick="location.href='/login';">
 
 
 {{ Form::open(array('enctype'=>'multipart/form-data','files'=>true)) }}
@@ -83,7 +83,7 @@ onkeyup="passcheck();"></td><td>
 
 <input type="submit" 
 style="width:330px;height:40px;text-align:center;
-background-color:#0088AA;color:white;" value="submit">
+background-color:#0088AA;color:white;cursor:pointer;" value="submit">
 
 	
 

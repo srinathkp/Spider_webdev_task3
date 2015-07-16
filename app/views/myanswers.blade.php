@@ -3,7 +3,7 @@
 @section('css')
 .display
 {
-background-color:#004444;
+background-color:#343434;
 
 }
 
@@ -13,6 +13,7 @@ height:40px;text-align:center;
 background-color:#0088AA;color:white;
 cellSpacing:0;
 cellPadding:0;
+cursor:pointer;
 border: solid 0px black;
 }
 .btn
@@ -32,7 +33,7 @@ color:maroon;
 
 
 
- <div style="margin-left:10%;margin-top:-250px;width:800px;position:absolute;">
+ <div style="margin-left:10%;margin-top:-234px;width:800px;position:absolute;">
  <input type="button" id='one' style="margin-top:-50px;" class="btn1" value="All" onclick="location.href='/myanswers/all';">
 <input type="button" id='two' style="margin-top:-50px;margin-left:-3px;" class="btn1" value="General" onclick="location.href='/myanswers/general';">
  <input type="button" id='three'  style="margin-top:-50px;margin-left:-3px;" class="btn1" value="Science" onclick="location.href='/myanswers/science';">
@@ -79,7 +80,7 @@ echo "document.getElementById('five').style.backgroundColor='#ff8855';</script>"
 <br /><br />
 <?php 
 $sub="ans_sub";
-
+$m=0;
 { foreach($questions as $question)
 	{   
 		echo "<div class=display id=".$question->qid.">";
@@ -113,8 +114,10 @@ $sub="ans_sub";
 		    echo "<br />";
 		    echo "<br />";
 
-		echo "</div>";
+		echo "</div>";$m++;
 }
+if($m==0)
+	echo "No Results found";
 }
 ?>
 
